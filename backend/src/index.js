@@ -4,8 +4,8 @@ import express from 'express';
 import bodyParser from 'body-parser';
 import config from './config';
 import multer from 'multer';
-import models, { connectDb } from './models';
-import routes from './routes';
+// import models, { connectDb } from './models';
+// import routes from './routes';
 const app = express();
 
 app.use(cors());
@@ -20,10 +20,10 @@ const upload = multer({
   },
 });
 
-app.use('/player', routes.player);
+// app.use('/player', routes.player);
+app.listen(process.env.PORT, '0.0.0.0',  () =>
+  console.log(`NFL App listening on port ${process.env.PORT}!`),
+);
 
-connectDb().then(async () => {
-  app.listen(process.env.PORT, '0.0.0.0',  () =>
-    console.log(`NFL App listening on port ${process.env.PORT}!`),
-  );
-});
+// connectDb().then(async () => {
+// });
